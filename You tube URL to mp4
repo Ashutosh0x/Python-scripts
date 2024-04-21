@@ -1,0 +1,29 @@
+from pytube import YouTube
+
+def download_video(url, output_path='./'):
+    try:
+        
+        yt = YouTube(url)
+
+        # Get the highest resolution stream
+        stream = yt.streams.get_highest_resolution()
+
+        # Download the video
+        print("Downloading:", stream.title)
+        stream.download(output_path)
+        print("Download complete!")
+
+    except Exception as e:
+        print("Error:", str(e))
+
+if __name__ == "__main__":
+    #  user to input the YouTube URL
+    video_url = input("Enter the YouTube video URL: ")
+
+    # Prompt the user to input the output directory (default is current directory)
+    output_directory = input("Enter the output directory (leave blank for current directory): ").strip()
+
+    if output_directory:
+        download_video(video_url, output_directory)
+    else:
+        download_video(video_url)
