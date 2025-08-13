@@ -1,0 +1,5 @@
+$u='https://api.github.com/repos/Ashutosh0x/standard-contracts/actions/runs?branch=feat/universal-nft-solana&per_page=5'; (Invoke-WebRequest -UseBasicParsing -Uri $u).Content | ConvertFrom-Json | Select-Object -ExpandProperty workflow_runs | Select-Object -First 5 -Property name,status,conclusion,head_branch,html_url | Format-Table -AutoSize | Out-String -Width 500 | Write-Output
+
+
+
+
